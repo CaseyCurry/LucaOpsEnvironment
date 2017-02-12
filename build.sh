@@ -1,4 +1,5 @@
 #!/bin/bash
+vagrant up
 vagrant ssh
 
 #install node
@@ -7,3 +8,4 @@ vagrant ssh
 ls /vagrant
 
 logout
+vagrant destroy -f
