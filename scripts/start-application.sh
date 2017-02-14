@@ -3,7 +3,7 @@ PATH_PREFIX=$1
 SERVICE_REGISTRY_API=http://localhost:12001
 
 function start {
-  pm2 start $PATH_PREFIX/$1/host.js --name $2 --watch $1 --output run-logs/$2.output.log --error run-logs/$2.error.log
+  pm2 start $PATH_PREFIX/$1/host.js --name $2 --watch $1 --output $PATH_PREFIX/run-logs/$2.output.log --error $PATH_PREFIX/run-logs/$2.error.log
 }
 
 pm2 delete all
@@ -13,7 +13,8 @@ start services/service-registry/client/dist service-registry-client
 
 API_STATUS_CODE=$(curl -s -o /dev/null -I -w "%{http_code}" $SERVICE_REGISTRY_API)
 
-if ["$API_STATUS_CODE" != "200"]; then
+if ["$API_STATUS_CODE" != "200"]
+then
   sleep 2s
 fi
 
