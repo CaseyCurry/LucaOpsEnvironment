@@ -2,7 +2,7 @@
 SERVICE_REGISTRY_API=http://localhost:12001
 
 function start {
-  pm2 start ../$1/host.js --name $2 --watch $1 --output run-logs/$2.output.log --error run-logs/$2.error.log
+  pm2 start $1/host.js --name $2 --watch $1 --output run-logs/$2.output.log --error run-logs/$2.error.log
 }
 
 pm2 delete all
