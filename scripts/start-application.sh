@@ -13,7 +13,7 @@ start services/service-registry/client/dist service-registry-client
 
 API_STATUS_CODE=$(curl -s -o /dev/null -I -w "%{http_code}" $SERVICE_REGISTRY_API)
 
-if ["$API_STATUS_CODE" != "200"]
+if [ "$API_STATUS_CODE" != "200" ]
 then
   sleep 2s
 fi
