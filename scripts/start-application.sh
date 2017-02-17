@@ -27,5 +27,3 @@ start services/checking-account/client/dist checking-account-client
 sleep 1s
 
 start application/dist application
-
-curl http://localhost:12001/api/services

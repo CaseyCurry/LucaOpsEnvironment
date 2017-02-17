@@ -1,44 +1,40 @@
 #!/bin/bash
 
-#install Node
+yum install -y epel-release
+yum -y update
+
+#install node
 curl --silent --location https://rpm.nodesource.com/setup_6.x | bash -
 yum install -y nodejs-6.9.5
 
 #install compiler
 yum install -y gcc-c++ make
 
-#install PM2
+#install pm2
 npm install -g pm2
 
-#install CouchDB
-yum install \
-    autoconf autoconf autoconf-archive automake ncurses-devel \
-    curl-devel erlang-asn1 erlang-erts erlang-eunit erlang-os_mon \
-    erlang-xmerl help2man js-devel libicu-devel libtool perl-Test-Harness
+#install couch
+yum install -y \
+  autoconf autoconf-archive automake \
+  curl-devel erlang-asn1 erlang-erts erlang-eunit \
+  erlang-os_mon erlang-xmerl help2man \
+  js-devel-1.8.5 libicu-devel libtool perl-Test-Harness \
+  erlang
 
-wget http://www.erlang.org/download/otp_src_R14B01.tar.gz
-tar -xvf otp_src_R14B01.tar.gz
-cd otp_src_R14B01
-./configure
-make && make install
+cp -R /vagrant/resources/couchdb /home/vagrant
+chown -R vagrant /home/vagrant/couchdb
+find /home/vagrant/couchdb -type d -exec chmod 0770 {} \;
+chmod 0644 /home/vagrant/couchdb/etc/*
 
-wget http://ftp.mozilla.org/pub/mozilla.org/js/mozjs17.0.0.tar.gz
-tar -xvf mozjs17.0.0.tar.gz
-cd mozjs17.0.0/js/src/
-./configure
-make && make install
+# start couch
+setsid couchdb/bin/couchdb >/dev/null 2>&1 < /dev/null &
 
-wget http://apache.forsale.plus/couchdb/source/2.0.0/apache-couchdb-2.0.0.tar.gz
-tar -xvf apache-couchdb-2.0.0.tar.gz
-cd apache-couchdb-2.0.0
-./configure
-make && make install
+sleep 3s
 
-adduser --no-create-home couchdb
-chown -R couchdb:couchdb /usr/local/var/lib/couchdb /usr/local/var/log/couchdb /usr/local/var/run/couchdb
-ln -sf /usr/local/etc/rc.d/couchdb /etc/init.d/couchdb
-chkconfig --add couchdb
-chkconfig couchdb on
-
-/etc/init.d/couchdb start
-/etc/init.d/couchdb status
+curl -X POST \
+     -H 'Content-Type: application/json' \
+     -d '{"action":"enable_cluster","username":"admin","password":"admin","bind_address":"0.0.0.0","port":"5984"}' \
+     http://127.0.0.1:5984/_cluster_setup
+curl -X PUT http://admin:admin@127.0.0.1:5984/_users
+curl -X PUT http://admin:admin@127.0.0.1:5984/_replicator
+curl -X PUT http://admin:admin@127.0.0.1:5984/_global_changes
