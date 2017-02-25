@@ -1,8 +1,7 @@
 #!/bin/bash
-echo ${BASH_SOURCE[0]}
 
 # create container
-source ${BASH_SOURCE[0]/../creators/nodejs.sh}
+source "$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"/../creators/nodejs.sh
 
 # start container
 rkt run --net=host --insecure-options=image nodejs-6.9.5-linux-amd64.aci
