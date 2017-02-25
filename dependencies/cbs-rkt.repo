@@ -1,0 +1,5 @@
+[virt7-rkt-common-candidate]
+name=virt7-rkt-common-candidate
+baseurl=http://cbs.centos.org/repos/virt7-rkt-common-candidate/x86_64/os/
+enabled=1
+gpgcheck=0
