@@ -24,8 +24,8 @@ rm -rf acbuild-v0.4.0
 # couch dependencies
 yum install -y autoconf autoconf-archive automake \
   curl-devel erlang-asn1 erlang-erts erlang-eunit \
-  erlang-os_mon erlang-xmerl \
-  js-devel-1.8.5 libicu-devel libtool perl-Test-Harness
+  erlang-os_mon erlang-xmerl js-devel-1.8.5 libicu-devel \
+  libtool perl-Test-Harness
 
 mkdir ./couchdb
 tar xzf /vagrant/dependencies/couchdb-2.0.0.tar.gz -C ./couchdb
