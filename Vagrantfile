@@ -3,7 +3,7 @@
 
 Vagrant.configure("2") do |config|
   config.vm.box = "centos/7"
-  config.vm.box_version = "1611.01"
+  config.vm.box_version = "1.0"
 
   config.vm.provision "shell", path: "scripts/provision.sh"
 

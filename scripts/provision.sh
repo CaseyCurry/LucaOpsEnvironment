@@ -1,19 +1,5 @@
 #!/bin/bash
 
-yum install -y epel-release
-yum -y update
-
-# rkt
-sed -i'' 's/SELINUX=enforcing/SELINUX=permissive/' /etc/selinux/config
-setenforce Permissive
-cp /vagrant/dependencies/cbs-rkt.repo /etc/yum.repos.d/cbs-rkt.repo
-yum install -y rkt
-
-# acbuild
-tar xf /vagrant/dependencies/acbuild-v0.4.0.tar.gz
-cp acbuild-v0.4.0/* /usr/bin/
-rm -rf acbuild-v0.4.0
-
 # node
 # curl --silent --location https://rpm.nodesource.com/setup_6.x | bash -
 # yum install -y nodejs-6.9.5
