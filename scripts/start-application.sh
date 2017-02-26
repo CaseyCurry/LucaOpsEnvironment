@@ -1,7 +1,7 @@
 #!/bin/bash
 
-SCRIPTS_DIR=${BASE_DIR}/scripts
-SERVICES_DIR=${BASE_DIR}/services
+SCRIPTS_DIR=/vagrant/scripts
+SERVICES_DIR=/vagrant/services
 SERVICE_REGISTRY_API=http://localhost:12001
 
 function startservice {
@@ -35,4 +35,4 @@ startservice $SERVICES_DIR/checking-account/client/dist checking-account-client
 
 sleep 1s
 
-startservice ${BASE_DIR}/application/dist application
+startservice /vagrant/application/dist application
