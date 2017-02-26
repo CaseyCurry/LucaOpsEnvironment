@@ -1,9 +1,8 @@
 #!/bin/bash
 acbuild begin
-acbuild set-name luca.com/nodejs
+acbuild set-name luca.com/$app_name
 acbuild label add version "latest"
-acbuild copy /vagrant/dependencies/node-v6.9.5-statically-linked-linux-x64 \
-  /node
+acbuild copy /vagrant/dependencies/$app_name/latest/$app_name-$version /node
 acbuild set-exec -- /node -v
-acbuild write /vagrant/containers/latest/nodejs-6.9.5-linux-amd64.aci
+acbuild write /vagrant/containers/latest/$container_name
 acbuild end
