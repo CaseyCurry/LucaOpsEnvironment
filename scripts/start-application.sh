@@ -1,6 +1,6 @@
 #!/bin/bash
 
-SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+SCRIPTS_DIR=$BASE_DIR/scripts
 SERVICES_DIR=$BASE_DIR/services
 SERVICE_REGISTRY_API=http://localhost:12001
 
@@ -8,11 +8,11 @@ function startservice {
   SERVICE_DIR=$1
   SERVICE_NAME=$2
   VERSION=sudo cat $SERVICE_DIR/../version.txt
-  source $BASE_DIR/scripts/containers/orchestrators/service.sh $SERVICE_NAME $VERSION
+  source $SCRIPTS_DIR/containers/orchestrators/service.sh $SERVICE_NAME $VERSION
 }
 
 function startnode {
-  source $BASE_DIR/scripts/containers/orchestrators/nodejs.sh
+  source $SCRIPTS_DIR/containers/orchestrators/nodejs.sh
 }
 
 startnode
