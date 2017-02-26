@@ -12,7 +12,7 @@ then
   do
     if [ -e "$file" ]
     then
-      mv -f "$file" "$history_dir/$file"
+      mv -f "$file" "$history_dir"
     fi
   done
   # create the new version
