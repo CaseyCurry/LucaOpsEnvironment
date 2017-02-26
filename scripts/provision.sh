@@ -14,7 +14,7 @@ yum install -y autoconf autoconf-archive automake \
   libtool perl-Test-Harness
 
 mkdir ./couchdb
-tar xzf /vagrant/dependencies/couchdb-2.0.0.tar.gz -C ./couchdb
+tar xzf /vagrant/dependencies/couchdb/latest/couchdb-2.0.0.tar.gz -C ./couchdb
 chown -R vagrant ./couchdb
 find ./couchdb -type d -exec chmod 0770 {} \;
 chmod 0644 ./couchdb/etc/*
