@@ -10,4 +10,4 @@ source "$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"/version.sh \
 
 # start container
 systemd-run rkt run --net=host --insecure-options=image \
-  $SCRIPT_DIR/../../../containers/latest/$CONTAINER_NAME
+  $BASE_DIR/containers/latest/$CONTAINER_NAME
