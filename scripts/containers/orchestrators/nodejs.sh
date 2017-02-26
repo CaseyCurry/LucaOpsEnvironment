@@ -1,7 +1,10 @@
 #!/bin/bash
 
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
 # create container
-source "$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"/../creators/nodejs.sh
+source $SCRIPT_DIR/../creators/nodejs.sh
 
 # start container
-rkt run --net=host --insecure-options=image nodejs-6.9.5-linux-amd64.aci
+systemd-run rkt run --net=host --insecure-options=image \
+  $SCRIPT_DIR/../../../containers/latest/nodejs-6.9.5-linux-amd64.aci

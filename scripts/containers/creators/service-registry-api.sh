@@ -1,6 +1,6 @@
 #!/bin/bash
 acbuild begin
-acbuild dependency add luca.com/nodejs:6.9.5
+acbuild dependency add luca.com/nodejs:latest
 acbuild set-name luca.com/service-registry-api
 acbuild label add version 1.0.0
 acbuild copy /vagrant/dist /dist
