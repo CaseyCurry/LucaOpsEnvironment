@@ -2,7 +2,8 @@
 
 yum install -y java-1.8.0-openjdk-src.x86_64
 
-yum install -y chromedriver.x86_64
+curl --silent -L https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm -o google-chrome-stable_current_x86_64.rpm
+sudo yum install -y google-chrome-stable_current_x86_64.rpm
 
 # couch dependencies
 yum install -y autoconf autoconf-archive automake \
