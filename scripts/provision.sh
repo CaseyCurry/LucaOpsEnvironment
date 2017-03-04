@@ -2,6 +2,8 @@
 
 yum install -y java-1.8.0-openjdk-src.x86_64
 
+yum install -y chromedriver.x86_64
+
 # couch dependencies
 yum install -y autoconf autoconf-archive automake \
   curl-devel erlang-asn1 erlang-erts erlang-eunit \
