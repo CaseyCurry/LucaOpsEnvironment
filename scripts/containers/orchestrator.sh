@@ -20,5 +20,11 @@ then
 fi
 
 # start container
-systemd-run rkt run --net=host --insecure-options=image \
-  /vagrant/containers/latest/$container_name
+if [ $wait_for_container = true ]
+then
+  systemd-run --scope --unit luca-$app_name rkt run --net=host --insecure-options=image \
+    /vagrant/containers/latest/$container_name
+else
+  systemd-run --unit luca-$app_name rkt run --net=host --insecure-options=image \
+    /vagrant/containers/latest/$container_name
+fi
