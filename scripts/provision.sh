@@ -22,7 +22,7 @@ yum install -y java-1.8.0-openjdk-src.x86_64
 yum install -y xorg-x11-server-Xvfb.x86_64
 
 # start selenium
-DISPLAY=:10 setsid xvfb-run java -jar /vagrant/dependencies/selenium/selenium-server-standalone-3.2.0.jar >/dev/null 2>&1 < /dev/null &
+setsid xvfb-run java -jar -Dwebdriver.gecko.driver=/usr/bin/geckodriver /vagrant/dependencies/selenium/selenium-server-standalone-3.2.0.jar >/dev/null 2>&1 < /dev/null &
 
 # cp /opt/google/chrome/google-chrome /opt/google/chrome/google-chromedriver
 # sed -i 's#$HERE/chrome#$HERE/chromedriver#g' /opt/google/chrome/google-chromedriver
