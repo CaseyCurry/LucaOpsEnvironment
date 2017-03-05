@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # install chrome
-curl --silent -L https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm -o google-chrome-stable_current_x86_64.rpm
+curl -L https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm -o google-chrome-stable_current_x86_64.rpm
 yum install -y google-chrome-stable_current_x86_64.rpm
 yum install -y chromedriver.x86_64
 
@@ -10,7 +10,10 @@ yum install -y chromedriver.x86_64
 # ./install_chrome.sh -f
 
 # install firefox
-# yum install -y firefox.x86_64
+yum install -y firefox.x86_64
+curl -L https://github.com/mozilla/geckodriver/releases/download/v0.14.0/geckodriver-v0.14.0-linux64.tar.gz | tar -xvz geckodriver*
+chmod +x geckodriver
+mv geckodriver /usr/bin
 
 # install java
 yum install -y java-1.8.0-openjdk-src.x86_64
