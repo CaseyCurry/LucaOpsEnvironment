@@ -1,13 +1,13 @@
 #!/bin/bash
 
 # install chrome
-curl -L https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm -o google-chrome-stable_current_x86_64.rpm
-yum install -y google-chrome-stable_current_x86_64.rpm
-yum install -y chromedriver.x86_64
+# curl -L https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm -o google-chrome-stable_current_x86_64.rpm
+# yum install -y google-chrome-stable_current_x86_64.rpm
+# yum install -y chromedriver.x86_64
 
-# curl --silent -L http://chrome.richardlloyd.org.uk/install_chrome.sh -o install_chrome.sh
-# chmod u+x install_chrome.sh
-# ./install_chrome.sh -f
+curl --silent -L http://chrome.richardlloyd.org.uk/install_chrome.sh -o install_chrome.sh
+chmod u+x install_chrome.sh
+./install_chrome.sh -f
 
 # install firefox
 yum install -y firefox.x86_64
