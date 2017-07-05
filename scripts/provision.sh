@@ -14,7 +14,7 @@ yum install -y chromedriver.x86_64
 
 # install firefox
 yum install -y firefox.x86_64
-curl -L https://github.com/mozilla/geckodriver/releases/download/v0.14.0/geckodriver-v0.14.0-linux64.tar.gz | tar -xvz geckodriver*
+curl -L https://github.com/mozilla/geckodriver/releases/download/v0.17.0/geckodriver-v0.17.0-linux64.tar.gz | tar -xvz geckodriver*
 chmod +x geckodriver
 mv geckodriver /usr/bin
 
