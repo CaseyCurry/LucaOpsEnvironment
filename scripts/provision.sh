@@ -3,29 +3,16 @@
 yum clean all
 
 # install chrome
-curl -L https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm -o google-chrome-stable_current_x86_64.rpm
-yum install -y google-chrome-stable_current_x86_64.rpm
-# yum install -y chromedriver.x86_64
+cp /vagrant/dependencies/chrome/google-chrome.repo /etc/yum.repos.d/google-chrome.repo
+yum install -y google-chrome-stable
 
 # install firefox
-# yum install -y firefox.x86_64
-# curl -L https://github.com/mozilla/geckodriver/releases/download/v0.17.0/geckodriver-v0.17.0-linux64.tar.gz | tar -xvz geckodriver*
-# chmod +x geckodriver
-# mv geckodriver /usr/bin
-
-# install java
-# yum install -y java-1.8.0-openjdk-src.x86_64
+yum install -y firefox.x86_64
 
 # install xvfb
 yum install -y xorg-x11-server-Xvfb.x86_64
 
-# start selenium
-# setsid xvfb-run java -jar /vagrant/dependencies/selenium/selenium-server-standalone-3.2.0.jar >/dev/null 2>&1 < /dev/null &
-
-# cp /opt/google/chrome/google-chrome /opt/google/chrome/google-chromedriver
-# sed -i 's#$HERE/chrome#$HERE/chromedriver#g' /opt/google/chrome/google-chromedriver
-
-# couch dependencies
+# install couchdb
 yum install -y autoconf autoconf-archive automake \
   curl-devel erlang-asn1 erlang-erts erlang-eunit \
   erlang-os_mon erlang-xmerl js-devel-1.8.5 libicu-devel \
@@ -37,6 +24,7 @@ chown -R vagrant ./couchdb
 find ./couchdb -type d -exec chmod 0770 {} \;
 chmod 0644 ./couchdb/etc/*
 
+# start couchdb
 # systemd-run --unit=luca-couchdb ./couchdb/bin/couchdb
 setsid ./couchdb/bin/couchdb >/dev/null 2>&1 < /dev/null &
 
