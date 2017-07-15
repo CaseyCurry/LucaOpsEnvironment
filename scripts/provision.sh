@@ -5,27 +5,22 @@ yum clean all
 # install chrome
 curl -L https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm -o google-chrome-stable_current_x86_64.rpm
 yum install -y google-chrome-stable_current_x86_64.rpm
-yum install -y chromedriver.x86_64
-
-# curl --silent -L http://chrome.richardlloyd.org.uk/install_chrome.sh -o install_chrome.sh
-# chmod u+x install_chrome.sh
-# ./install_chrome.sh -f
-# yum install https://dl.google.com/linux/direct/google-chrome-stable_current_i386.rpm
+# yum install -y chromedriver.x86_64
 
 # install firefox
-yum install -y firefox.x86_64
-curl -L https://github.com/mozilla/geckodriver/releases/download/v0.17.0/geckodriver-v0.17.0-linux64.tar.gz | tar -xvz geckodriver*
-chmod +x geckodriver
-mv geckodriver /usr/bin
+# yum install -y firefox.x86_64
+# curl -L https://github.com/mozilla/geckodriver/releases/download/v0.17.0/geckodriver-v0.17.0-linux64.tar.gz | tar -xvz geckodriver*
+# chmod +x geckodriver
+# mv geckodriver /usr/bin
 
 # install java
-yum install -y java-1.8.0-openjdk-src.x86_64
+# yum install -y java-1.8.0-openjdk-src.x86_64
 
 # install xvfb
 yum install -y xorg-x11-server-Xvfb.x86_64
 
 # start selenium
-setsid xvfb-run java -jar /vagrant/dependencies/selenium/selenium-server-standalone-3.2.0.jar >/dev/null 2>&1 < /dev/null &
+# setsid xvfb-run java -jar /vagrant/dependencies/selenium/selenium-server-standalone-3.2.0.jar >/dev/null 2>&1 < /dev/null &
 
 # cp /opt/google/chrome/google-chrome /opt/google/chrome/google-chromedriver
 # sed -i 's#$HERE/chrome#$HERE/chromedriver#g' /opt/google/chrome/google-chromedriver
