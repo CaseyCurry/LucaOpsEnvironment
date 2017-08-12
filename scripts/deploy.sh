@@ -77,7 +77,7 @@ function transfer_containers {
   fi
 
   echo transferring containers
-  rsync -av --delete --progress --ignore-existing -e 'ssh -i /Users/caseycurry/Documents/LucaInstance.pem' $directory_to_transfer centos@$ip:~/containers
+  rsync -av --delete --progress --ignore-existing -e 'ssh -i /Users/caseycurry/Documents/LucaInstance.pem' '$directory_to_transfer' centos@$ip:~/containers
   echo transferred
 
   if [ $remove_host_after_transfer ]
