@@ -73,7 +73,7 @@ function transfer_containers {
   then
     remove_host_after_transfer=true
     echo adding $ip to known_hosts
-    ssh-keyscan -Ht rsa $ip >> ~/.ssh/known_hosts
+    ssh-keyscan -Ht rsa $ip >> /Users/caseycurry/.ssh/known_hosts
   fi
 
   echo transferring containers
@@ -83,7 +83,7 @@ function transfer_containers {
   if [ $remove_host_after_transfer ]
   then
     echo removing $ip from known_hosts
-    ssh-keygen -R $ip -f ~/.ssh/known_hosts
+    ssh-keygen -R $ip -f /Users/caseycurry/.ssh/known_hosts
   fi
 }
 
