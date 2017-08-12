@@ -4,7 +4,7 @@
 Vagrant.configure("2") do |config|
   config.vm.box = "centos/7"
   # config.ssh.insert_key = false
-  config.vm.provision "shell", path: "scripts/provision.sh"
+  config.vm.provision "shell", path: "scripts/test/provision-machine.sh"
 
   # Create a forwarded port mapping which allows access to a specific port
   # within the machine from a port on the host machine. In the example below,

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-orchestrator=/vagrant/scripts/containers/orchestrator.sh
+orchestrator=/vagrant/scripts/test/containers/orchestrator.sh
 services_dir=/vagrant/services
 application_dir=/vagrant/application
 dependecies_dir=/vagrant/dependencies
