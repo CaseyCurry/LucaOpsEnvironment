@@ -85,7 +85,8 @@ function transfer_containers {
   #   echo removing $ip from known_hosts
   #   ssh-keygen -R $ip -f /Users/caseycurry/.ssh/known_hosts
   # fi
-  scp -r -o StrictHostKeyChecking=no -i /Users/caseycurry/Documents/LucaInstance.pem '$directory_to_transfer' centos@$ip:~/containers
+  # scp -r -o StrictHostKeyChecking=no -i /Users/caseycurry/Documents/LucaInstance.pem '$directory_to_transfer' centos@$ip:~/containers
+  rsync -av --delete --progress --ignore-existing -e 'ssh -o StrictHostKeyChecking=no -i /Users/caseycurry/Documents/LucaInstance.pem' '$directory_to_transfer' centos@$ip:~/containers
 }
 
 directory_to_transfer=`pwd`/$1
