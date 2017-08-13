@@ -69,22 +69,23 @@ function start_instance {
 }
 
 function transfer_containers {
-  if [ -z "`ssh-keygen -F $ip`" ]
-  then
-    remove_host_after_transfer=true
-    echo adding $ip to known_hosts
-    ssh-keyscan -H -t rsa $ip >> /Users/caseycurry/.ssh/known_hosts
-  fi
-
-  echo transferring containers
-  rsync -av --delete --progress --ignore-existing -e 'ssh -i /Users/caseycurry/Documents/LucaInstance.pem' '$directory_to_transfer' centos@$ip:~/containers
-  echo transferred
-
-  if [ $remove_host_after_transfer ]
-  then
-    echo removing $ip from known_hosts
-    ssh-keygen -R $ip -f /Users/caseycurry/.ssh/known_hosts
-  fi
+  # if [ -z "`ssh-keygen -F $ip`" ]
+  # then
+  #   remove_host_after_transfer=true
+  #   echo adding $ip to known_hosts
+  #   ssh-keyscan -H -t rsa $ip >> /Users/caseycurry/.ssh/known_hosts
+  # fi
+  #
+  # echo transferring containers
+  # rsync -av --delete --progress --ignore-existing -e 'ssh -i /Users/caseycurry/Documents/LucaInstance.pem' '$directory_to_transfer' centos@$ip:~/containers
+  # echo transferred
+  #
+  # if [ $remove_host_after_transfer ]
+  # then
+  #   echo removing $ip from known_hosts
+  #   ssh-keygen -R $ip -f /Users/caseycurry/.ssh/known_hosts
+  # fi
+  scp -o StrictHostKeyChecking=no -i /Users/caseycurry/Documents/LucaInstance.pem '$directory_to_transfer' centos@$ip:~/containers
 }
 
 directory_to_transfer=`pwd`/$1
