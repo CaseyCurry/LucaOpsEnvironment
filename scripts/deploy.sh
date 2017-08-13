@@ -105,8 +105,8 @@ get_ip_address
 transfer_containers
 
 # leave the machine in the same state it was found
-if [ "$initial_state" = "running" ] &&
-   [ "$initial_state" = "pending" ]
+if [ "$initial_state" != "running" ] &&
+   [ "$initial_state" != "pending" ]
 then
   echo stopping instance
   aws ec2 stop-instances --instance-ids $instance_id
